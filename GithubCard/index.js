@@ -2,7 +2,7 @@
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
-    https://api.github.com/users/<your name>
+    https://api.github.com/users/xabiibali
 */
 
 
@@ -51,5 +51,108 @@
     Using that array, iterate over it, requesting data for each user, creating a new card for each user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [];
+  /*  <div class="card">
+      <img src={image url of user} />
+      <div class="card-info">
+        <h3 class="name">{users name}</h3>
+        <p class="username">{users user name}</p>
+        <p>Location: {users location}</p>
+        <p>Profile:
+          <a href={address to users github page}>{address to users github page}</a>
+        </p>
+        <p>Followers: {users followers count}</p>
+        <p>Following: {users following count}</p>
+        <p>Bio: {users bio}</p>
+      </div>
+    </div>
+*/
 
+function githubCards (user){
+  const cards = document.createElement('div')
+ const img = document.createElement('img')
+ const carinfo = document.createElement('div')
+ const h3name = document.createElement('h3') 
+ const username = document.createElement('p')
+ const location = document.createElement('p')
+ const profel = document.createElement('p')
+ const address = document.createElement('a')
+ const fllowers = document.createElement('p')
+ const  fllowing = document.createElement('p')
+ const bio = document.createElement('p')
+
+cards.appendChild(img)
+cards.appendChild(carinfo)
+carinfo.appendChild(h3name)
+carinfo.appendChild(username)
+carinfo.appendChild(location)
+carinfo.appendChild(profel)
+carinfo.appendChild(address)
+carinfo.appendChild(fllowers)
+carinfo.appendChild(fllowing)
+carinfo.appendChild(bio)
+
+
+cards.classList.add('card')
+carinfo.classList.add('card-info')
+h3name.classList.add('name')
+username.classList.add('username')
+
+
+
+img.src = user.avatar_url
+h3name.textContent = user.name
+username.textContent = user.login
+location.textContent = user.location
+address.textContent = user.html_url
+address.href = user.html_url
+fllowers.textContent = user.followers
+fllowing.textContent = user.following
+bio.textContent = user.bio
+
+
+
+
+return cards
+}
+
+const gitcar = document.querySelector('.cards')
+
+
+axios.get (' https://api.github.com/users/xabiibali')
+.then(reposense => {
+  const datar = reposense.data
+gitcar.appendChild(githubCards(datar))
+  
+})
+
+axios.get (' https://api.github.com/users/TaasCode')
+.then(reposense => {
+  const datar = reposense.data
+gitcar.appendChild(githubCards(datar))
+  
+})
+
+
+axios.get (' https://api.github.com/users/abdiwalimohamed2021')
+.then(reposense => {
+  const datar = reposense.data
+gitcar.appendChild(githubCards(datar))
+  
+})
+
+
+axios.get (' https://api.github.com/users/Hodan1997')
+.then(reposense => {
+  const datar = reposense.data
+gitcar.appendChild(githubCards(datar))
+  
+})
+
+
+axios.get (' https://api.github.com/users/gabalaax')
+.then(reposense => {
+  const datar = reposense.data
+gitcar.appendChild(githubCards(datar))
+  
+})
